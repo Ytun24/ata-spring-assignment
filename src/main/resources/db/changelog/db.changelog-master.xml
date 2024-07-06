@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="create-salary-survey" author="tunyaporn">
+        <createTable tableName="salary_survey">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="date_time" type="VARCHAR(20)">
+            </column>
+            <column name="employer" type="VARCHAR()">
+            </column>
+            <column name="location" type="VARCHAR()">
+            </column>
+            <column name="job_title" type="VARCHAR()">
+            </column>
+            <column name="year_at_employer" type="VARCHAR()">
+            </column>
+            <column name="year_of_experience" type="VARCHAR()">
+            </column>
+            <column name="salary" type="VARCHAR()">
+            </column>
+            <column name="signing_bonus" type="VARCHAR()">
+            </column>
+            <column name="annual_bonus" type="VARCHAR()">
+            </column>
+            <column name="annual_stock" type="VARCHAR()">
+            </column>
+            <column name="gender" type="VARCHAR()">
+            </column>
+            <column name="comments" type="VARCHAR()">
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="load-data-salary-survey" author="tunyaporn" >
+        <loadData file="salary-survey.csv"
+                  separator=","
+                  relativeToChangelogFile="true"
+                  tableName="salary_survey"
+                  usePreparedStatements="true">
+            <column header="Timestamp"
+                    name="date_time"
+                    type="STRING"/>
+            <column header="Employer"
+                    name="employer"
+                    type="STRING"/>
+            <column header="Location"
+                    name="location"
+                    type="STRING"/>
+            <column header="Job Title"
+                    name="job_title"
+                    type="STRING"/>
+            <column header="Years at Employer"
+                    name="year_at_employer"
+                    type="STRING"/>
+            <column header="Years of Experience"
+                    name="year_of_experience"
+                    type="STRING"/>
+            <column header="Salary"
+                    name="salary"
+                    type="STRING"/>
+            <column header="Signing Bonus"
+                    name="signing_bonus"
+                    type="STRING"/>
+            <column header="Annual Bonus"
+                    name="annual_bonus"
+                    type="STRING"/>
+            <column header="Annual Stock Value/Bonus"
+                    name="annual_stock"
+                    type="STRING"/>
+            <column header="Gender"
+                    name="gender"
+                    type="STRING"/>
+            <column header="Additional Comments"
+                    name="comments"
+                    type="STRING"/>
+        </loadData>
+    </changeSet>
+
+</databaseChangeLog>
