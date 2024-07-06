@@ -1,6 +1,8 @@
 package com.ata.it.backend.service;
 
 import com.ata.it.backend.enums.SortOrderType;
+import com.ata.it.backend.model.SalarySurvey;
+import com.ata.it.backend.model.SalarySurveySearchCriteria;
 import com.ata.it.backend.repository.SalarySurveyRepository;
 import com.ata.it.backend.service.impl.SalarySurveyServiceImpl;
 import org.junit.jupiter.api.Test;
@@ -9,6 +11,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
@@ -23,20 +26,32 @@ public class SalarySurveyServiceTest {
     SalarySurveyServiceImpl salarySurveyService;
 
     @Test
-    void sortData_withGivenColumnAndDescOrder() {
+    void findAll_sortData_withValidColumnNameAndDescOrder() {
         Sort expectedSort = Sort.by("salary").descending();
+        SalarySurveySearchCriteria filter = SalarySurveySearchCriteria.builder().sort("salary").sortType(SortOrderType.DESC).build();
 
-        salarySurveyService.sortSalarySurveyBy("salary", SortOrderType.DESC);
+        salarySurveyService.findAll(filter);
 
-        verify(salarySurveyRepository, times(1)).findAll(expectedSort);
+        verify(salarySurveyRepository, times(1)).findAll((Specification<SalarySurvey>) any(), eq(expectedSort));
     }
 
     @Test
-    void sortData_withGivenColumnAndAscOrder() {
-        Sort expectedSort = Sort.by("gender").ascending();
+    void findAll_sortData_withValidGivenColumnNameAndAscOrder() {
+        Sort expectedSort = Sort.by("jobTitle").ascending();
+        SalarySurveySearchCriteria filter = SalarySurveySearchCriteria.builder().sort("job_title").sortType(SortOrderType.ASC).build();
 
-        salarySurveyService.sortSalarySurveyBy("gender", SortOrderType.ASC);
+        salarySurveyService.findAll(filter);
 
-        verify(salarySurveyRepository, times(1)).findAll(expectedSort);
+        verify(salarySurveyRepository, times(1)).findAll((Specification<SalarySurvey>) any(), eq(expectedSort));
+    }
+
+    @Test
+    void findAll_sortData_withInvalidColumnName() {
+        SalarySurveySearchCriteria filter = SalarySurveySearchCriteria.builder().sort("invalid_name").build();
+
+        salarySurveyService.findAll(filter);
+
+        verify(salarySurveyRepository, times(1)).findAll((Specification<SalarySurvey>) any());
+
     }
 }
