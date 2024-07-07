@@ -2,12 +2,11 @@ package com.ata.it.backend.service.impl;
 
 import com.ata.it.backend.enums.SortOrderType;
 import com.ata.it.backend.model.SalarySurvey;
-import com.ata.it.backend.model.SalarySurveySearchCriteria;
+import com.ata.it.backend.dto.SalarySurveySearchCriteria;
 import com.ata.it.backend.model.SalarySurvey_;
 import com.ata.it.backend.service.SalarySurveyService;
 import jakarta.persistence.*;
 import jakarta.persistence.criteria.*;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 

@@ -1,4 +1,4 @@
-package com.ata.it.backend.model;
+package com.ata.it.backend.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

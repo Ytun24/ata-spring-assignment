@@ -1,4 +1,4 @@
-package com.ata.it.backend.model;
+package com.ata.it.backend.dto;
 
 import com.ata.it.backend.enums.SortOrderType;
 import lombok.Builder;

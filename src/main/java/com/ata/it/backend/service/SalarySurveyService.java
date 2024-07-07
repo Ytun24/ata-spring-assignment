@@ -1,7 +1,7 @@
 package com.ata.it.backend.service;
 
 import com.ata.it.backend.model.SalarySurvey;
-import com.ata.it.backend.model.SalarySurveySearchCriteria;
+import com.ata.it.backend.dto.SalarySurveySearchCriteria;
 
 import java.util.List;
 

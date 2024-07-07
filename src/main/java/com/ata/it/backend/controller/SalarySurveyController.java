@@ -2,10 +2,10 @@ package com.ata.it.backend.controller;
 
 import com.ata.it.backend.enums.SortOrderType;
 import com.ata.it.backend.model.SalarySurvey;
-import com.ata.it.backend.model.SalarySurveyComparableParam;
-import com.ata.it.backend.model.SalarySurveySearchCriteria;
+import com.ata.it.backend.dto.SalarySurveyComparableParam;
+import com.ata.it.backend.dto.SalarySurveySearchCriteria;
 import com.ata.it.backend.service.impl.SalarySurveyServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -28,7 +28,7 @@ public class SalarySurveyController {
     public List<SalarySurvey> getJobData(
             @RequestParam(required = false) String gender,
             @RequestParam(required = false) String jobTitle,
-            @RequestParam(required = false, defaultValue = "") List<String> fields,
+            @Schema(allowableValues = "id, job_title, salary, employer, location, gender", types = "array") @RequestParam(required = false, defaultValue = "") List<String> fields,
             @RequestParam(required = false) String sort,
             @RequestParam(required = false, name = "sort_type", defaultValue = "ASC") SortOrderType sortType,
             SalarySurveyComparableParam comparableParam) {

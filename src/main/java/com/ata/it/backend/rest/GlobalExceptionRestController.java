@@ -1,6 +1,6 @@
 package com.ata.it.backend.rest;
 
-import com.ata.it.backend.model.BaseResponse;
+import com.ata.it.backend.dto.BaseResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
