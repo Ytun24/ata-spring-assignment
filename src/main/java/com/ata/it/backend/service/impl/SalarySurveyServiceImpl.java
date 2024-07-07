@@ -67,7 +67,9 @@ import java.util.*;
         criteria.where(predicates);
 
         Order order = generateOrder(root, builder, filter);
-        criteria.orderBy(order);
+        if (order != null) {
+            criteria.orderBy(order);
+        }
 
         List<SalarySurvey> salarySurveys = entityManager.createQuery(criteria).getResultList();
         return salarySurveys;
@@ -80,7 +82,9 @@ import java.util.*;
         tupleCriteria.where(predicates);
 
         Order order = generateOrder(tupleRoot, builder, filter);
-        tupleCriteria.orderBy(order);
+        if (order != null) {
+            tupleCriteria.orderBy(order);
+        }
 
         List<Tuple> tuplesResult = entityManager.createQuery(tupleCriteria).getResultList();
         return mappingSalarySurveyTuple(tupleRoot, tuplesResult, filter.getFields());

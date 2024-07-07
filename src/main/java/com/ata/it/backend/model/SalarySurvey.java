@@ -49,5 +49,6 @@ public class SalarySurvey {
 
     private String gender;
 
+    @Column(name = "comments", length = 1000)
     private String comments;
 }
