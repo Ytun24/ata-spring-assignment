@@ -6,8 +6,5 @@ import com.ata.it.backend.model.SalarySurveySearchCriteria;
 import java.util.List;
 
 public interface SalarySurveyService {
-    List<SalarySurvey> findSalarySurveyByGender(String gender);
-
     List<SalarySurvey> findAll(SalarySurveySearchCriteria filter);
-
 }

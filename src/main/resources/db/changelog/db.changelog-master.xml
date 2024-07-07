@@ -31,7 +31,7 @@
             </column>
             <column name="gender" type="VARCHAR()">
             </column>
-            <column name="comments" type="VARCHAR()">
+            <column name="comments" type="VARCHAR(500)">
             </column>
         </createTable>
     </changeSet>

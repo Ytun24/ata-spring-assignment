@@ -1,17 +1,23 @@
 package com.ata.it.backend.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 
 @Data
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
+@JsonInclude(JsonInclude.Include.NON_DEFAULT)
 @Table(name="salary_survey")
 public class SalarySurvey {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO, generator="native")
-    @GenericGenerator(name = "native", strategy = "native")
+    @GenericGenerator(name = "native")
     private int id;
 
     @Column(name = "date_time")
@@ -44,5 +50,4 @@ public class SalarySurvey {
     private String gender;
 
     private String comments;
-
 }
